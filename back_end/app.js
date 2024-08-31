@@ -30,5 +30,5 @@ app.use('/user', loginRouter )
 
 
 app.get("/", (req, res) => {
-    res.send("Hello")
+    res.send("Hello gúys")
 })

@@ -8,10 +8,6 @@
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TanPhuc2804/Coffee_Project/issues"
-  },
-  "homepage": "https://github.com/TanPhuc2804/Coffee_Project#readme",
   "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
