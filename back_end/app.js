@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
 const dotenv = require('dotenv')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+
 dotenv.config()
 const PORT = process.env.PORT || 4000
 
@@ -19,6 +21,11 @@ mongoose.connect(process.env.STRING_MONGO)
 app.listen(PORT, () => {
     console.log('Listening to port ' + PORT);
 })
+
+app.use(cors({
+    origin:['http://localhost:5173'],
+    credentials:true
+}))
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended:false}))
 
@@ -30,5 +37,5 @@ app.use('/user', loginRouter )
 
 
 app.get("/", (req, res) => {
-    res.send("Hello gúys")
+    res.send("Hello ")
 })
