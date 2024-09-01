@@ -45,7 +45,7 @@ const Login = () => {
         <button className="btn-login">Login</button>
 
         <div className='link-account'>
-            <Link to="/register" className='link'>Don't you have account ?</Link>
+            <Link to="/register" className='link'>HAhaah Don't you have account ?</Link>
             <Link className='link'>Forgot password ?</Link>
         </div>
 
