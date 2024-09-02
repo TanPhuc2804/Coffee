@@ -3,7 +3,7 @@ import{Link, useNavigate} from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import '../css/login.css'
-const Login = () => {
+const Login = ({setRole}) => {
   const [email,setEmail] =useState('')
   const [password,setPassword] = useState('')
   const [message,setMessage] = useState('')
@@ -13,9 +13,11 @@ const Login = () => {
     e.preventDefault()
     axios.post('http://localhost:3000/user/login',{email,password})
       .then((res)=>{
-        if(res.data.login && res.data.role ==='user'){
-          navigate('/drashboard')
+        if(res.data.login){
+          setRole(res.data.role)
+          navigate('/')
         }
+        console.log(res)
       })
       .catch(err=>{
         const data = err.response.data
@@ -45,7 +47,7 @@ const Login = () => {
         <button className="btn-login">Login</button>
 
         <div className='link-account'>
-            <Link to="/register" className='link'>HAhaah Don't you have account ?</Link>
+            <Link to="/register" className='link'>Don't you have account ?</Link>
             <Link className='link'>Forgot password ?</Link>
         </div>
 

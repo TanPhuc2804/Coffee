@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 dotenv.config()
 const PORT = process.env.PORT || 4000
@@ -28,7 +29,7 @@ app.use(cors({
 }))
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended:false}))
-
+app.use(cookieParser())
 // router
 
 app.use('/user', registerRouter )
@@ -37,5 +38,7 @@ app.use('/user', loginRouter )
 
 
 app.get("/", (req, res) => {
+    console.log(req.headers.cookie);
+    
     res.send("Hello ")
 })

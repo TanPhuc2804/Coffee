@@ -1,6 +1,7 @@
 .container-register{
-    background: url('../assets/img.jpg');
-    min-height: 100vh;
+    background: url('https://tmuploader.s3.us-west-1.amazonaws.com/1689361-1581328742584_Slider-4.jpg'); 
+    background-size: cover;
+    min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,17 +9,19 @@
  }
 
 .form-register{
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid ;
     border-radius: 10px;
     padding: 30px 40px;
     background: transparent;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(40px);
 }
 
 .form-register h2{
     text-align: center;
+    font-weight: bold;
     margin: 10px;
     font-size: 30px;
+    color: rgb(53 27 14);
 }
 
 .item-input{
@@ -36,14 +39,14 @@
     border: none;
     outline: none;
     padding: 5px 10px;
-    border: 1px solid #fff;
+    border: 1px solid rgb(53 27 14);
     border-radius: 50px;
     background-color: transparent;
-    color: #fff;
+    color: rgb(53 27 14);
 }
 
 .item-input input::placeholder, #role{
-    color: #fff;
+    color: rgb(53 27 14);
     font-size: 14px;
 }
 
@@ -61,6 +64,7 @@
 }
 
 .btn-register{
+    background-color: rgb(53 27 14);
     width: 90%;
     border: none;
     margin:0 20px;
@@ -68,6 +72,7 @@
     border-radius: 40px;
     font-size: 20px;
     font-weight: 600;
+    color: #fff;
 }
 
 .link-account{
@@ -78,7 +83,7 @@
 
 .link{
     text-decoration: none;
-    color: #fff;
+    color: rgb(53 27 14);
     font-size: 13px;
 }
 

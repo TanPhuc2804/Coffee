@@ -1,14 +1,14 @@
 .container-login{
-    background: url('../assets/img.jpg');
+    background: url('https://tmuploader.s3.us-west-1.amazonaws.com/1689361-1581328742584_Slider-4.jpg');
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: rgb(53 27 14);
  }
 
 .form-login{
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(53 27 14);
     border-radius: 10px;
     padding: 30px 40px;
     background: transparent;
@@ -18,10 +18,12 @@
 .form-login h2{
     text-align: center;
     margin: 10px;
-    font-size: 30px;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .item-input{
+    color: rgb(53 27 14);;
     display: flex;
     margin: 20px;
     align-items: center;
@@ -36,15 +38,19 @@
     border: none;
     outline: none;
     padding: 5px 10px;
-    border: 1px solid #fff;
+    border: 1px solid rgb(53 27 14);
     border-radius: 50px;
     background-color: transparent;
-    color: #fff;
+    color: rgb(53 27 14);
 }
 
 .item-input input::placeholder, #role{
-    color: #fff;
+    color: rgb(53 27 14);
     font-size: 14px;
+}
+
+.inputClass{
+    background-color: aqua;
 }
 
 .bi{
@@ -61,6 +67,8 @@
 }
 
 .btn-login{
+    background-color: rgb(53 27 14);
+    color: #fff;
     width: 90%;
     border: none;
     margin:0 20px;
@@ -77,8 +85,8 @@
    }
 
 .link{
+    color: rgb(53 27 14);
     text-decoration: none;
-    color: #fff;
     font-size: 13px;
 }
 

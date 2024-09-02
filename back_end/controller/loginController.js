@@ -1,29 +1,48 @@
-const {generationAccessToken,generationRefreshToken} = require('../services/jwt')
+const { generationAccessToken, generationRefreshToken } = require('../services/jwt')
 const bcrypt = require('bcrypt')
 const userModel = require('../models/userModel')
+const adminModel = require('../models/adminModel')
 
 
-
-const loginUserController = async function (req,res){
+const loginUserController = async function (req, res) {
     // check user existed
-    const {email, password} = req.body
+    const { email, password } = req.body
+    console.log(req.body);
+    //user
+    const userLogin = await userModel.findOne({ email: email })
+    if (userLogin) {
+        const incoretPass = await bcrypt.compare(password, userLogin.password)
+        if (!incoretPass) {
+            return res.status(401).json({ message: "Password is incorred" })
+        }
 
-    const userExsisted = await userModel.findOne({email: email})
-    if(!userExsisted){
-        return res.status(401).json({login:false,role:'undefined',message:'Invalid user'})
+        // create token with jwt
+        const token = generationAccessToken({
+            userID: userLogin._id,
+            role: userLogin.role
+        })
+        return res.cookie('token', token, { httpOnly: true, secure: true }).json({ login: true, role: `${userLogin.role}` })
     }
-    const passCheck = await bcrypt.compare(password,userExsisted.password)
-    if(!passCheck){
-        return res.status(400).json({login:false,role:'undefined',message:'Incorret password'})
+
+    //admin
+    const adminLogin = await adminModel.findOne({ email: email })
+    if (adminLogin) {
+        const incoretPass = await bcrypt.compare(password,adminLogin.password)
+        if(!incoretPass){
+            return res.status(401).json({ message: "Password is incorred" })
+        }
+
+        const token = generationAccessToken({
+            userID:adminLogin._id,
+            role:adminLogin.role
+        })
+        return res.cookie('token',token,{httpOnly:true,secure:true}).json({login:true,role:`${adminLogin.role}`})
     }
-    
-    // create token with jwt
-    const token = generationAccessToken({
-        userID: userExsisted._id,
-        role: userExsisted.role
-    })
-   
-    return res.cookie('token',token,{httpOnly:true,secure:true}).json({login:true, role:`${userExsisted.role}`})
 }
 
-module.exports = {loginUserController}
+const logoutController = function(req,res){
+    res.clearCookie('token')
+    return res.json({logout:true })
+}
+
+module.exports = { loginUserController,logoutController }
